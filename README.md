@@ -10,15 +10,15 @@ Poder marcar tareas completadas y un buscador para tareas sin completar.
 Se pide un filtro para listar las completadas y no completadas.
 
 - Se valora el uso de Hooks, Redux (opcional), validaciones, Custom Hooks, librerias para parseo de formularios, entre otros.
-- usar algun framework css como Bootstrap o Material UI.
-- persistir las tareas en storage local
+- Usar algun framework CSS como Bootstrap o MaterialUI.
+- Persistir las tareas en storage local
 - Login con usuario default y rutas React para una pagina Home y las tareas.
 
 **Casos de uso**
 
-- CRUD de tareas
-- Buscar tareas no completadas por Titulo.
-- Marcar tarea completada
+- CRUD de tareas.
+- Buscar tareas no completadas por título.
+- Marcar tarea completada.
 
 Para la entrega del mismo se debe seguir los siguientes pasos:
 
