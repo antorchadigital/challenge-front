@@ -1,5 +1,8 @@
 import ButtonUnstyled from '@mui/base/ButtonUnstyled';
 import styled from '@emotion/styled';
+import colors from '../../utils/colors';
+
+const buttonColors = colors.components.button;
 
 const defaultButton = `
 	outline: none;
@@ -12,15 +15,15 @@ const defaultButton = `
 `;
 
 export const Contained = styled(ButtonUnstyled)`
-	background-color: ${props => props.bgcolor || 'white'};
-	color: ${props => props.color || '#696969'};
+	background-color: ${props => props.bgcolor || buttonColors.contained.bgColor};
+	color: ${props => props.color || buttonColors.contained.color};
 	border: none;
 	${defaultButton}
 `;
 
 export const Outlined = styled(ButtonUnstyled)`
 	background: none;
-	color: ${props => props.color || 'white'};
-	border: 1px solid ${props => props.color || 'white'};
+	color: ${props => props.color || buttonColors.outlined.color};
+	border: 1px solid ${props => props.color || buttonColors.outlined.borderColor};
 	${defaultButton}
 `;
