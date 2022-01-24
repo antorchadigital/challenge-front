@@ -3,10 +3,16 @@ import { Button } from '../../components';
 import { Wrapper, Presentation } from './styles';
 import tasks from '../../assets/images/tasks.svg';
 import colors from '../../helpers/colors';
+import useAuth from '../../hooks/useAuth';
+import { Navigate } from 'react-router-dom';
 
 const homeColors = colors.home;
 
 const Home = () => {
+	const { auth } = useAuth();
+	if (auth.valid) {
+		return <Navigate to="/dashboard" />;
+	}
 	return (
 		<Wrapper maxWidth="md">
 			<Presentation>

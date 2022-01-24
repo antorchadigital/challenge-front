@@ -4,18 +4,32 @@ import { Wrapper, Title } from './styles';
 import register from './handleRegisterForm';
 import { useState } from 'react';
 import colors from '../../helpers/colors';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../redux/actions/auth';
+import { handleUserRegistration } from '../../helpers/auth';
 
 const registerColors = colors.form;
 
 const RegisterForm = () => {
-	const [userExistsError] = useState(false);
+	const dispatch = useDispatch();
+	const [userExistsError, setUserExistsError] = useState(false);
+
+	const handleSubmit = async data => {
+		try {
+			const userData = await handleUserRegistration(data);
+			dispatch(registerUser(userData));
+		} catch {
+			setUserExistsError(true);
+		}
+	};
+
 	return (
 		<Wrapper>
 			<Title>¡Creá tu cuenta!</Title>
 			<Form
 				initialValues={register.initialValues}
 				validationSchema={register.validationSchema}
-				onSubmit={values => console.log(values)}
+				onSubmit={values => handleSubmit(values)}
 			>
 				{
 					userExistsError &&

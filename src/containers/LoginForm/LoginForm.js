@@ -4,25 +4,38 @@ import { Wrapper, Title } from './styles';
 import login from './handleLoginForm';
 import { useState } from 'react';
 import colors from '../../helpers/colors';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/actions/auth';
+import { handleUserLogin } from '../../helpers/auth';
 
 const loginColors = colors.form;
 
 const LoginForm = () => {
+	const dispatch = useDispatch();
 	const [credentialsError, setCredentialsError] = useState(false);
-    
+
+	const handleSubmit = async data => {
+		try {
+			const userData = await handleUserLogin(data);
+			dispatch(loginUser(userData));
+		} catch {
+			setCredentialsError(true);
+		}
+	};
+
 	return (
 		<Wrapper>
 			<Title>¡Bienvenido de nuevo!</Title>
 			<Form
 				initialValues={login.initialValues}
 				validationSchema={login.validationSchema}
-				onSubmit={values => console.log(values)}
+				onSubmit={values => handleSubmit(values)}
 			>
 				{
 					credentialsError &&
-                    <ErrorMessageComponent>
-                        Usuario o contraseña incorrectos
-                    </ErrorMessageComponent>
+					<ErrorMessageComponent>
+						Usuario o contraseña incorrectos
+					</ErrorMessageComponent>
 				}
 				<ValidationErrorMessage name="username" />
 				<Input
@@ -43,7 +56,7 @@ const LoginForm = () => {
 					bgcolor={loginColors.button.bgColor}
 					type="submit"
 				>
-                    Iniciar sesión
+					Iniciar sesión
 				</Button>
 			</Form>
 		</Wrapper>
