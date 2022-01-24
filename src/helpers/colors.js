@@ -19,6 +19,19 @@ const colors = {
 			color: palette.white,
 			bgColor: '#1976d2'
 		}
+	},
+	form: {
+		inputWrapper: {
+			color: '#9D9D9D'
+		},
+		errorMessage: {
+			color: '#A90000',
+			bgColor: '#FCA9A9'
+		},
+		button: {
+			color: palette.white,
+			bgColor: '#1976d2'
+		}
 	}
 };
 
